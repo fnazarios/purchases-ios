@@ -54,5 +54,5 @@ workflows:
             tags:
               ignore: /^.*-SNAPSHOT/
             branches:
-              only: master
+              only: fix/docs_by_tag
 
