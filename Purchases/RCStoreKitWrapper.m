@@ -7,6 +7,7 @@
 //
 
 #import "RCStoreKitWrapper.h"
+#import "RCCrossPlatformSupport.h"
 
 #import "RCUtils.h"
 
@@ -39,7 +40,7 @@
 - (void)setDelegate:(id<RCStoreKitWrapperDelegate>)delegate
 {
     _delegate = delegate;
-    
+
     if (_delegate != nil) {
         [self.paymentQueue addTransactionObserver:self];
     } else {
@@ -82,7 +83,7 @@
     }
 }
 
-#if (TARGET_OS_IOS && !TARGET_OS_MACCATALYST) || TARGET_OS_TV
+#if PURCHASES_INITIATED_FROM_APP_STORE_AVAILABLE
 - (BOOL)paymentQueue:(SKPaymentQueue *)queue shouldAddStorePayment:(SKPayment *)payment forProduct:(SKProduct *)product
 {
     return [self.delegate storeKitWrapper:self shouldAddStorePayment:payment forProduct:product];

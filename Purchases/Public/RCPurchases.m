@@ -100,7 +100,7 @@ static BOOL _automaticAppleSearchAdsAttributionCollection = NO;
 }
 
 + (NSString *)frameworkVersion {
-    return @"3.1.0-SNAPSHOT";
+    return @"3.1.2";
 }
 
 + (instancetype)sharedPurchases {
@@ -429,7 +429,7 @@ static BOOL _automaticAppleSearchAdsAttributionCollection = NO;
         CALL_IF_SET_ON_MAIN_THREAD(completion, infoFromCache, nil);
         if ([self.deviceCache isPurchaserInfoCacheStale]) {
             RCDebugLog(@"Cache is stale, updating caches");
-            [self fetchAndCachePurchaserInfoWithCompletion:completion];
+            [self fetchAndCachePurchaserInfoWithCompletion:nil];
         }
     } else {
         RCDebugLog(@"No cached purchaser info, fetching");
